@@ -21,25 +21,27 @@
                         <button class="btn btn-outline-secondary btn-lg" onclick="linkedin()">My linkedin</button> 
                     </p>
                  <!-- Contact form -->
+                 <div id="form-messages"></div>
                     <div class="contact-form" style="text-align:center">
                         <div class="container">
-                            <form>
+                            <form id= "ajax-contact" action="https://formspree.io/modullah@gmail.com" method="POST">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-12">
                                         <h1>Get in Touch</h1> 
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-12 right">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="">
+                                            <input type="text" id="name" class="form-control form-control-lg" placeholder="Your Name" name="name">
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
+                                            <input type="email" id="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
                                         </div>
                                         <div class="form-group">
-                                            <textarea class="form-control form-control-lg">
+                                            <label for="message"></label>
+                                            <textarea class="form-control form-control-lg" id="message" name="message">
                                             </textarea>
                                         </div>
-                                        <input type="submit" class="btn btn-secondary btn-block" value="Send" name="">
+                                        <input type="submit" id="sendMessage" class="btn send btn-secondary btn-block" value="Send" name="">
                                     </div>
                                 </div>
                             </form>
