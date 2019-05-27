@@ -156,5 +156,15 @@
   background:  rgba(241, 239, 238, 0);
   color: #fff;
   border:0;
+ }
 
+ .orderedList{
+  background:  rgba(241, 239, 238, 0);
+  color: #fff;
+  border:0;
+  widows: 500px;
+  height: 150px;
+  line-height:3em;
+  overflow:auto;
+  padding:5px;
  }
