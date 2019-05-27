@@ -1,0 +1,160 @@
+ 
+ 
+.navbar, .navbar-brand, .nav-link, .navbar-wk, .navbar-brand-wk, .nav-link-wk{
+  background:rgba(33, 34, 37, 0);
+  /*background-color: transparent;*/
+  transition: background-color 1s ease 0s;
+  border: none;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 4px;
+}
+
+.navbar-wk, .navbar-brand-wk, .nav-link-wk{
+  color: #02020c; cursor: pointer;
+}
+
+.nav-link , .navbar-brand{
+  color: #f4f4f4; cursor: pointer;
+}
+
+.nav-link, .nav-link-wk{
+  margin-right: 1em !important;
+}
+
+.nav-link:hover , .navbar-brand:hover, .description button:hover{
+  background: #faf9fa; color: #0f0f0f;
+  text-decoration: none;
+  /*outline: none !important; */
+}
+
+.nav-link-wk:hover, .navbar-brand-wk:hover{
+  background: rgba(83, 82, 83, 0.534); color: #f3f3f7;
+  text-decoration: none;
+}
+
+/*Correct size of Home button on work page*/
+.navbar-brand-wk{
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.navbar-collapse, .navbar-wk-collapse{
+  justify-content: flex-end;
+}
+
+.navbar-toggler{
+  background:#fff !important;
+}
+
+.overlay{
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(244, 244, 244, 0);
+}
+
+.description{
+  position: absolute;
+  top: 20%;
+  margin: auto;
+  padding: 2em;
+}
+
+.description-wk{
+  position: absolute;
+  top: 20%;
+  margin: auto;
+  padding: 2em;
+  color: #02020c;
+}
+
+.description h1{
+  color:rgb(248, 243, 250) ;
+}
+
+.description p{
+  color:rgba(240, 234, 240, 0.959);
+  font-size: 20px;
+  width: 50%;
+  line-height: 1.5;
+}
+
+.description button{
+  background: #faf9fa00; color: #f8f8f8fd;
+  transition: background-color 1s ease 0s;
+  border: solid rgba(83, 82, 83, 0.342);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/*Background Images*/
+
+.about-bg{
+  background-image: url('../images/coffee_berries.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.work-bg{
+  background-image: url('../images/boa_dc.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.carouselInd{
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-bg{
+  background-image: url('../images/Shanghai_1.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-inner .carousel-item {
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+}
+
+/* Contact form */
+
+.contact-form{
+  margin: 6em 0;
+  position: relative;  
+ }
+ 
+ .contact-form h1{
+  padding:2em 1px;
+  color: rgb(248, 246, 245); 
+ }
+ .contact-form .right{
+  max-width: 600px;
+ }
+ .contact-form .right .btn-secondary{
+  background:  rgb(241, 239, 238);
+  color: #fff;
+  border:0;
+ }
+ .contact-form .right .form-control::placeholder{
+  color: #888;
+  font-size: 16px;
+ }
+
+
+ /* About page */
+
+ .unorderedList{
+  background:  rgba(241, 239, 238, 0);
+  color: #fff;
+  border:0;
+
+ }
