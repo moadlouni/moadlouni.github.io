@@ -47,7 +47,7 @@ function linkedin(){
 
 function resume(){
 
-    var win = window.open("../Mo_Adlouni_Resume.pdf", '_blank');
+    var win = window.open("../Mo_Adlouni_Resume_2020.pdf", '_blank');
     win.focus();
 
 }
