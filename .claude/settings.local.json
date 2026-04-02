@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p public/images)",
+      "Bash(cp images/* public/images/)",
+      "Bash(cp Mo_Adlouni_Resume_2025.pdf public/)",
+      "Bash(touch public/.nojekyll)",
+      "Bash(mv next.config.ts next.config.mjs)",
+      "Bash(sed -i 's/import type { NextConfig } from .next.//' next.config.mjs)"
+    ]
+  }
+}
