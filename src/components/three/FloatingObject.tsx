@@ -8,17 +8,29 @@ export default function FloatingObject() {
   const groupRef = useRef<THREE.Group>(null)
   const torusRef = useRef<THREE.Mesh>(null)
   const wireRef = useRef<THREE.Mesh>(null)
-  const targetRotation = useRef({ x: 0, y: 0 })
+  const targetRotation = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
 
   useEffect(() => {
+    let rafId: number
+    let pending = false
+
     const handleMouseMove = (e: MouseEvent) => {
-      targetRotation.current = {
-        x: (e.clientY / window.innerHeight - 0.5) * 0.5,
-        y: (e.clientX / window.innerWidth - 0.5) * 0.8,
-      }
+      if (pending) return
+      pending = true
+      rafId = requestAnimationFrame(() => {
+        targetRotation.current = {
+          x: (e.clientY / window.innerHeight - 0.5) * 0.5,
+          y: (e.clientX / window.innerWidth - 0.5) * 0.8,
+        }
+        pending = false
+      })
     }
+
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      cancelAnimationFrame(rafId)
+    }
   }, [])
 
   useFrame((state) => {

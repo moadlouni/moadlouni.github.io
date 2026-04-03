@@ -14,6 +14,8 @@ export function useHorizontalScroll() {
       }
     }
 
+    // passive: false is required so we can call preventDefault() and intercept
+    // vertical wheel events, converting them to horizontal scroll on this element.
     el.addEventListener('wheel', onWheel, { passive: false })
     return () => el.removeEventListener('wheel', onWheel)
   }, [])

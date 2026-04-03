@@ -15,11 +15,15 @@ export default function ContactForm() {
     const form = e.currentTarget
     const data = new FormData(form)
 
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 10000)
+
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
+        signal: controller.signal,
       })
       if (res.ok) {
         setStatus('success')
@@ -27,8 +31,11 @@ export default function ContactForm() {
       } else {
         setStatus('error')
       }
-    } catch {
+    } catch (err) {
+      console.error('Contact form submission failed:', err)
       setStatus('error')
+    } finally {
+      clearTimeout(timeout)
     }
   }
 
@@ -84,6 +91,8 @@ export default function ContactForm() {
         <motion.button
           type="submit"
           disabled={status === 'sending'}
+          aria-busy={status === 'sending'}
+          aria-label={status === 'sending' ? 'Sending message…' : 'Send message'}
           className="inline-flex items-center gap-3 rounded-full border border-ink-black bg-ink-black px-8 py-3 font-inter text-sm tracking-widest uppercase text-white transition-colors hover:bg-transparent hover:text-ink-black disabled:opacity-50"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

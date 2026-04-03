@@ -6,7 +6,7 @@ export const SITE_DESCRIPTION =
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/mo-adlouni-6523242a'
 export const RESUME_PATH = '/Mo_Adlouni_Resume_2025.pdf'
 
-export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/modullah@gmail.com'
+export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgpleerx'
 
 export const NAV_LINKS = [
   { href: '/', label: 'Home' },
