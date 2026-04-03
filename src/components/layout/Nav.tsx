@@ -16,8 +16,8 @@ export default function Nav() {
   })
 
   return (
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center">
     <motion.nav
-      className="fixed top-4 left-1/2 z-50 -translate-x-1/2"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -53,5 +53,6 @@ export default function Nav() {
         })}
       </motion.div>
     </motion.nav>
+    </div>
   )
 }

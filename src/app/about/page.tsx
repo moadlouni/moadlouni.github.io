@@ -46,13 +46,13 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="font-inter text-lg leading-relaxed text-ink-mid font-light">
-              Java Software Engineer with a demonstrated history of working in the banking industry.
+              Full Stack Software Engineer with a decade of experience in the banking industry.
             </p>
             <p className="font-inter text-base leading-relaxed text-ink-mid font-light">
-              Skilled in Management, Software Development Life Cycle (SDLC), Agile Methodologies, Public Speaking, and Testing.
+              Skilled in React (JavaScript & TypeScript), Java with Spring Boot, Agile Methodologies, Clear Communication, and Testing.
             </p>
             <p className="font-inter text-base leading-relaxed text-ink-mid font-light">
-              Well-rounded engineering professional with a Computer Science education from Oregon State University.
+              Well-rounded engineering professional with a B.S.in Computer Science from Oregon State University.
             </p>
 
             {/* Skills */}

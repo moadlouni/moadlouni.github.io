@@ -64,7 +64,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}
           >
-            Banking · Java · Oregon State University
+            Banking · React · Java · Oregon State University
           </motion.p>
 
           <motion.div
