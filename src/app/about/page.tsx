@@ -61,7 +61,7 @@ export default function AboutPage() {
                 Expertise
               </p>
               <div className="flex flex-wrap gap-3">
-                {['Java', 'Agile / SDLC', 'Banking Systems', 'Management', 'Public Speaking', 'Testing'].map((skill) => (
+                {['React','Javascript','Java', 'Spring Boot', 'TypeScript', 'Agile / SDLC', 'Banking Systems', 'Management', 'Public Speaking', 'Testing'].map((skill) => (
                   <span
                     key={skill}
                     className="rounded-full border border-border-light bg-white px-4 py-1.5 font-inter text-xs text-ink-mid"
