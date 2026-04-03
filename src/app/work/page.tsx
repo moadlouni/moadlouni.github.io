@@ -7,7 +7,7 @@ import ResumeButton from '@/components/ui/ResumeButton'
 const experience = [
   {
     company: 'Wells Fargo',
-    title: 'Software Engineer III',
+    title: 'Full Stack Software Engineer',
     period: 'Present',
     description:
       'Developing and maintaining enterprise banking software within a large-scale Java ecosystem. Working across the full software development life cycle using Agile methodologies.',

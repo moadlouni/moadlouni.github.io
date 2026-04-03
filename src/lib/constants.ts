@@ -1,5 +1,5 @@
 export const SITE_NAME = 'Mo Adlouni'
-export const SITE_TITLE = 'Mo Adlouni — Software Engineer'
+export const SITE_TITLE = 'Mo Adlouni — Full Stack Software Engineer'
 export const SITE_DESCRIPTION =
   'Java Software Engineer III with a background in banking and a Computer Science degree from Oregon State University.'
 
