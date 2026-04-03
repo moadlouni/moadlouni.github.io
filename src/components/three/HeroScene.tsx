@@ -7,16 +7,14 @@ import FloatingObject from './FloatingObject'
 import SceneEnvironment from './SceneEnvironment'
 
 export default function HeroScene() {
-  const [hovered, setHovered] = useState(false)
+  const [dragging, setDragging] = useState(false)
 
   return (
     <div
       className="h-full w-full"
-      style={{ cursor: hovered ? 'grab' : 'default' }}
-      onPointerEnter={() => setHovered(true)}
-      onPointerLeave={() => setHovered(false)}
-      onPointerDown={(e) => (e.currentTarget.style.cursor = 'grabbing')}
-      onPointerUp={(e) => (e.currentTarget.style.cursor = hovered ? 'grab' : 'default')}
+      onPointerDown={() => setDragging(true)}
+      onPointerUp={() => setDragging(false)}
+      onPointerLeave={() => setDragging(false)}
     >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
@@ -28,7 +26,7 @@ export default function HeroScene() {
           <SceneEnvironment />
           <FloatingObject />
           <OrbitControls
-            autoRotate={!hovered}
+            autoRotate={!dragging}
             autoRotateSpeed={1.5}
             enableDamping
             dampingFactor={0.06}
