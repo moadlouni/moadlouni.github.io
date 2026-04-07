@@ -39,7 +39,7 @@ npx serve out         # preview the exact static export locally
 - **All site-wide data** (nav links, interest cards, URLs, Formspree endpoint) lives in `src/lib/constants.ts`.
 - **3D components must be dynamically imported with `ssr: false`** — WebGL doesn't exist in Node.js. `HeroScene` is loaded via `dynamic(() => import(...), { ssr: false })` in `HeroSection.tsx`.
 - **Formspree contact form is blocked on localhost** by Formspree's free plan. It only works on the deployed domain. Test form behavior via mocked fetch in unit tests instead.
-- **Resume download** links directly to `public/Mo_Adlouni_Resume_2025.pdf` via `<a download>`.
+- **Resume download** links directly to `public/Mo_Adlouni_Resume_swe_.pdf` via `<a download>`.
 - **Images** live in `public/images/` and are referenced as `/images/filename.jpg`. `images: { unoptimized: true }` is set in `next.config.mjs` because static export has no image optimization server.
 - **`public/.nojekyll`** must exist — without it, GitHub Pages' Jekyll processor ignores `_next/` and breaks the app.
 

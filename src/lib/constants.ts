@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION =
   'Java Software Engineer III with a background in banking and a Computer Science degree from Oregon State University.'
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/mo-adlouni-6523242a'
-export const RESUME_PATH = '/Mo_Adlouni_Resume_2025.pdf'
+export const RESUME_PATH = '/Mo_Adlouni_Resume_swe_.pdf'
 
 export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgpleerx'
 
