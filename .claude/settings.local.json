@@ -6,7 +6,27 @@
       "Bash(cp Mo_Adlouni_Resume_2025.pdf public/)",
       "Bash(touch public/.nojekyll)",
       "Bash(mv next.config.ts next.config.mjs)",
-      "Bash(sed -i 's/import type { NextConfig } from .next.//' next.config.mjs)"
+      "Bash(sed -i 's/import type { NextConfig } from .next.//' next.config.mjs)",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_close",
+      "Bash(kill %1)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "Bash(rm -f about-mobile.png about-mobile-after.png contact-mobile.png gallery-end.png gallery-end2.png home-mobile.png home-mobile-after.png home-mobile-after2.png work-mobile.png)",
+      "Bash(rm -rf .playwright-mcp)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "PowerShell(gh *)",
+      "PowerShell(Test-Path *)",
+      "Read(//c/Program Files/GitHub CLI//**)",
+      "Read(//c/Users/Modul/AppData/Local/Programs/**)",
+      "Bash(git commit *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }
