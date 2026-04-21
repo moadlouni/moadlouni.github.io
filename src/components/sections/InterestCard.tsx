@@ -13,7 +13,7 @@ interface InterestCardProps {
 export default function InterestCard({ image, title, caption }: InterestCardProps) {
   return (
     <motion.div
-      className="relative w-72 flex-none overflow-hidden rounded-2xl bg-white shadow-sm"
+      className="relative flex h-full w-72 flex-none flex-col overflow-hidden rounded-2xl bg-white shadow-sm"
       style={{ scrollSnapAlign: 'start' }}
       whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.12)' }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}

@@ -12,6 +12,7 @@ export default function HeroScene() {
   return (
     <div
       className="h-full w-full"
+      style={{ touchAction: 'pan-y' }}
       onPointerDown={() => setDragging(true)}
       onPointerUp={() => setDragging(false)}
       onPointerLeave={() => setDragging(false)}

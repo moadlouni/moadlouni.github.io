@@ -22,7 +22,8 @@ export default function InterestsGallery() {
       {/* Scrollable strip */}
       <motion.div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4"
+        data-swipe-ignore
+        className="flex items-stretch gap-6 overflow-x-auto scrollbar-hide px-6 md:px-12 pb-4"
         style={{ scrollSnapType: 'x mandatory' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

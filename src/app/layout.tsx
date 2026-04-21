@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
+import SwipeNav from '@/components/layout/SwipeNav'
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/lib/constants'
 
 const playfair = Playfair_Display({
@@ -35,7 +36,9 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col bg-parchment text-ink-black antialiased">
         <Nav />
-        <main className="flex-1">{children}</main>
+        <SwipeNav>
+          <main className="flex-1">{children}</main>
+        </SwipeNav>
         <Footer />
       </body>
     </html>
