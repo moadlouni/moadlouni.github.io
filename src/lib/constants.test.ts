@@ -4,7 +4,7 @@ describe('constants', () => {
   it('has correct site metadata', () => {
     expect(SITE_NAME).toBe('Mo Adlouni')
     expect(SITE_TITLE).toContain('Mo Adlouni')
-    expect(RESUME_PATH).toBe('/Mo_Adlouni_Resume_2025.pdf')
+    expect(RESUME_PATH).toBe('/Mo_Adlouni_Resume_swe_.pdf')
   })
 
   it('has a valid LinkedIn URL', () => {
