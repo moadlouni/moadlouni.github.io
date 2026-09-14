@@ -1,0 +1,127 @@
+name: Uptime watchdog
+
+on:
+  push:
+    branches: [master]
+    paths: [.github/workflows/uptime.yml]
+  schedule:
+    # Run away from the top of the hour, when scheduled Actions are busiest.
+    - cron: '7/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+
+concurrency:
+  group: uptime-watchdog
+  cancel-in-progress: false
+
+env:
+  SITE_URL: https://moadlouni.github.io/
+  INCIDENT_LABEL: uptime
+  INCIDENT_TITLE: '[uptime] Site outage detected'
+  DEPLOY_WORKFLOW: deploy.yml
+  DEPLOY_REF: master
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check the public site
+        id: health
+        shell: bash
+        run: |
+          set +e
+
+          response_file=$(mktemp)
+          check_url="${SITE_URL}?uptime_check=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          http_code=$(curl \
+            --silent \
+            --show-error \
+            --location \
+            --retry 2 \
+            --retry-delay 10 \
+            --retry-all-errors \
+            --connect-timeout 10 \
+            --max-time 20 \
+            --output "$response_file" \
+            --write-out '%{http_code}' \
+            "$check_url")
+          curl_status=$?
+
+          if [[ "$curl_status" -eq 0 && "$http_code" -eq 200 ]] && \
+             grep --quiet --ignore-case 'Mo Adlouni' "$response_file"; then
+            echo "healthy=true" >> "$GITHUB_OUTPUT"
+            echo "details=HTTP $http_code and expected page content found" >> "$GITHUB_OUTPUT"
+          else
+            echo "healthy=false" >> "$GITHUB_OUTPUT"
+            echo "details=curl exit $curl_status; HTTP ${http_code:-unavailable}; expected page content missing" >> "$GITHUB_OUTPUT"
+          fi
+
+          rm -f "$response_file"
+
+      - name: Close a recovered incident
+        if: steps.health.outputs.healthy == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          issue_number=$(gh issue list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --label "$INCIDENT_LABEL" \
+            --json number \
+            --jq '.[0].number // empty' 2>/dev/null || true)
+
+          if [[ -n "$issue_number" ]]; then
+            gh issue close "$issue_number" \
+              --repo "$GITHUB_REPOSITORY" \
+              --comment "The site recovered at $(date --utc --iso-8601=seconds). The watchdog received ${{ steps.health.outputs.details }}."
+          fi
+
+      - name: Report outage and trigger one redeployment
+        if: steps.health.outputs.healthy != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh label create "$INCIDENT_LABEL" \
+            --repo "$GITHUB_REPOSITORY" \
+            --color D73A4A \
+            --description "Automated availability incident" \
+            --force
+
+          issue_number=$(gh issue list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --label "$INCIDENT_LABEL" \
+            --json number \
+            --jq '.[0].number // empty')
+
+          if [[ -z "$issue_number" ]]; then
+            gh issue create \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$INCIDENT_TITLE" \
+              --label "$INCIDENT_LABEL" \
+              --body "@${{ github.repository_owner }} The uptime watchdog detected an outage at $(date --utc --iso-8601=seconds).
+
+          - URL: $SITE_URL
+          - Result: ${{ steps.health.outputs.details }}
+          - Watchdog run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Automatic action: dispatched $DEPLOY_WORKFLOW from $DEPLOY_REF
+
+          This issue will close automatically after a later health check succeeds."
+
+            gh workflow run "$DEPLOY_WORKFLOW" \
+              --repo "$GITHUB_REPOSITORY" \
+              --ref "$DEPLOY_REF"
+          else
+            gh issue comment "$issue_number" \
+              --repo "$GITHUB_REPOSITORY" \
+              --body "The site is still unavailable at $(date --utc --iso-8601=seconds): ${{ steps.health.outputs.details }}. No additional redeployment was triggered while this incident remains open."
+          fi
+
+          exit 1
