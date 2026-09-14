@@ -30,12 +30,12 @@ export default function HeroSection() {
         {/* Right: text */}
         <div className="flex flex-col justify-center md:pl-8">
           <motion.p
-            className="font-inter text-xs tracking-[0.35em] uppercase text-ink-light mb-6"
+            className="font-inter text-sm tracking-[0.08em] text-ink-light mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            presents
+            Hello, I’m
           </motion.p>
 
           <motion.h1
